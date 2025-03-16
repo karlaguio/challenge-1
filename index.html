@@ -36,7 +36,7 @@
                 background-position: 0% 50%;
             }
         }
-        
+        /* main calculator box */
         .calculator {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
@@ -208,7 +208,7 @@
         
         <button id="calculateBtn">Calculate</button>
         
-        <div class="result" id="result">Result will appear here</div>
+        <div class="result" id="result">The final result will appear here</div>
     </div>
 
     <script>
@@ -222,16 +222,16 @@
             const num2Error = document.getElementById("num2Error");
             
             calculateBtn.addEventListener("click", function() {
-                // Reset errors
+                // To reset errors
                 num1Error.style.display = "none";
                 num2Error.style.display = "none";
                 
-                // Get input values
+                // To get input values
                 const num1 = num1Input.value.trim();
                 const num2 = num2Input.value.trim();
                 const operation = operationSelect.value;
                 
-                // Validate inputs
+                // if invalid input
                 let isValid = true;
                 
                 if (num1 === "" || isNaN(parseFloat(num1))) {
@@ -244,15 +244,15 @@
                     isValid = false;
                 }
                 
-                // Additional validation for division by zero
+                // if division is by 0
                 if (operation === "/" && parseFloat(num2) === 0) {
-                    num2Error.textContent = "Cannot divide by zero";
+                    num2Error.textContent = "you cannot divide by zero";
                     num2Error.style.display = "block";
                     isValid = false;
                 }
                 
                 if (!isValid) {
-                    resultDiv.textContent = "Please fix errors to calculate";
+                    resultDiv.textContent = "Please fix errors to calculate the numbers";
                     return;
                 }
                 
@@ -276,7 +276,7 @@
                         result = number1 / number2;
                         break;
                     default:
-                        result = "Invalid operation";
+                        result = "Invalid operation, please insert numbers";
                 }
                 
                 // Display the result with formatted numbers
